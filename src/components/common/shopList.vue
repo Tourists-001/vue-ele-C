@@ -143,6 +143,7 @@ export default {
   methods: {
     // 获取商家列表数据
     async getShoList() {
+        console.log( this.latitude,this.longitude);
       const res = await shopList(
         this.latitude,
         this.longitude,

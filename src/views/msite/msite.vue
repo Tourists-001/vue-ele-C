@@ -2,7 +2,7 @@
   <div>
     <!-- 头部 -->
     <headTop signinUp="mysite">
-      <router-link :to="'/search/geohash'" class="link_search" slot="search">
+      <router-link :to="`/search/${geohash}`" class="link_search" slot="search">
         <svg
           width="100%"
           height="100%"
@@ -154,6 +154,9 @@ export default {
       this.SAVE_GEOHASH(this.geohash);
       // 获取位置信息
       const res = await msiteAddress(this.geohash);
+      if(res.status) {
+          return
+      }
     //   console.log(res,'ffffff');
       this.msiteTitle = res.name;
       // 记录当前经纬度

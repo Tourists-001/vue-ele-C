@@ -19,6 +19,7 @@ export default {
                 // 获取到第一个
                 scrollEl = el;
                 heightEl = el.children[0];
+                // console.log(heightEl);
             } else {
                 scrollEl = document.documentElement;
                 // console.log(scrollEl.scrollTop);

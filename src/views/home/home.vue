@@ -101,7 +101,7 @@ export default {
       const res = await cityGuess();
       this.guessCity = res.name;
       this.guessCityId = res.id;
-      console.log(this.guessCityId);
+    //   console.log(this.guessCityId);
     },
     // 获取热门城市列表
     async getHostCity() {

@@ -37,17 +37,16 @@ export const throttle = function (fn, wait) {
 }
 
 // 防抖
-export const debounce = function (handle, delay) {
+export function debounce(fn, duration = 100) {
     let timer = null;
-    return function () {
+    return (...args) => {
         clearTimeout(timer);
-        let This = this,
-            _arg = arguments
         timer = setTimeout(() => {
-            handle.apply(This, _arg)
-        }, delay)
-    }
+            fn(...args);
+        }, duration);
+    };
 }
+
 
 // 获取style样式
 export const getStyle = (element, attr, NumberMode = 'int') => {
@@ -167,7 +166,7 @@ export const animate = (element, target, duration = 400, mode = 'ease-out', call
                     break;
                 default:
                     status = iCurrent != target[attr];
-                    console.log(status);
+                    // console.log(status);
             }
 
             if (status) {

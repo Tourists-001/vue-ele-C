@@ -15,7 +15,11 @@
         />
       </svg>
     </section>
-    <router-link class="head_login" :to="userInfo? '/profile':'/login'" v-if='signinUp'>
+    <router-link
+      class="head_login"
+      :to="userInfo ? '/profile' : '/login'"
+      v-if="signinUp"
+    >
       <svg class="user_avatar" v-if="userInfo">
         <use
           xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -25,7 +29,7 @@
       <span v-else class="login_span">登录&nbsp;|&nbsp;注册</span>
     </router-link>
     <section class="title_head ellipsis" v-if="headTitle">
-      <span class="title_text">{{headTitle}}</span>
+      <span class="title_text">{{ headTitle }}</span>
     </section>
     <slot name="edit"></slot>
     <slot name="msite-title"></slot>
@@ -35,21 +39,20 @@
 </template>
 
 <script>
-import {mapState, mapActions} from 'vuex'
+import { mapState, mapActions } from "vuex";
 export default {
   name: "headTop",
   props: ["signinUp", "headTitle", "goBack"],
   mounted() {
-      this.getUserInfo()
+    this.getUserInfo();
+    // console.log(this.userInfo, "ssss");
   },
   computed: {
-      ...mapState([
-          'userInfo'
-      ])
+    ...mapState(["userInfo"]),
   },
   methods: {
-      ...mapActions(['getUserInfo'])
-  }
+    ...mapActions(["getUserInfo"]),
+  },
 };
 </script>
 

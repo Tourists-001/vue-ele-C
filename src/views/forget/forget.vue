@@ -67,7 +67,7 @@
 <script>
 import alertTip from "@/components/common/alertTip";
 import { getCaptchas, changePassword } from "@/api/user";
-import { debounce,removeStore } from "@/config/nUtils";
+import { debounce, removeStore } from "@/config/nUtils";
 export default {
   components: {
     alertTip,
@@ -101,9 +101,8 @@ export default {
     // 关闭弹窗
     closeTip() {
       this.showAlert = false;
-      removeStore('user_id')
-      this.$router.go(-1)
-      
+      removeStore("user_id");
+      this.$router.go(-1);
     },
     // 提交数据
     async resetButton() {
@@ -150,10 +149,11 @@ export default {
       }
     },
     // 获取图片验证码
-    getCaptchaCode: debounce(async function () {
+    async getCaptchaCode() {
       const res = await getCaptchas();
+      console.log(res);
       this.captchaCodeImg = res.code;
-    }, 2000),
+    },
   },
 };
 </script>
